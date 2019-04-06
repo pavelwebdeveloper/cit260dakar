@@ -20,7 +20,7 @@ public class Vehicle {
 	int numberOfWheels;
 	
 	public Vehicle() {
-	
+		this.number = 1; // This will use global/protected number
 	}
 	
 	// Setters
