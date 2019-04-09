@@ -46,7 +46,7 @@ public class DakarRace {
 		listOfCars.add(new Car());
 		listOfTrucks.add(new Truck());
 		listOfTrucks.add(new Truck());
-		listOfTrucks.add(new Truck());		
+		listOfTrucks.add(new Truck());
 		
 		System.out.println("Show the vehicles");
 		System.out.println("There's no order because the number is assign in order of register.");
@@ -84,7 +84,6 @@ public class DakarRace {
 			truck.run(KILOMETERS_400);
 			System.out.println(truck.toString());
 		}
-	
 		//Call the run in every object
 		System.out.println("Show the first places");
 		//Call for the three vehicles in every category
@@ -92,7 +91,7 @@ public class DakarRace {
 		Bike bestBike = bestBike(listOfBikes);
 		System.out.println("Best Car: " + bestCar);
 		System.out.println("Best Bike: " + bestBike);
-		System.out.println("Best Bike: " + bestTruck(listOfTrucks));
+		System.out.println("Best Truck: " + bestTruck(listOfTrucks));
 		
 		
 		
@@ -111,22 +110,17 @@ public class DakarRace {
 		
 		for(Car car : listOfCars)
 		{
-			car.setSpeed();
-			car.run(KILOMETERS_400);
 			System.out.println(car.toString());
 		}
 		for(Bike bike : listOfBikes)
 		{
-			bike.setSpeed();
-			bike.run(KILOMETERS_300);
 			System.out.println(bike.toString());
 		}
 		for(Truck truck : listOfTrucks)
 		{
-			truck.setSpeed();
-			truck.run(KILOMETERS_400);
 			System.out.println(truck.toString());
 		}
+		
 	}
 	
 	public static Car bestCar(ArrayList<Car> Cars)
@@ -219,16 +213,16 @@ public class DakarRace {
             	stringDistance = input.next();
             	
             	doubleDistance = input.next();
-            	/*
+            	
             	System.out.println("Car");
             	System.out.println("number " + number);
             	System.out.println("speed " + speed);
             	System.out.println("distance " + distance);
             	System.out.println("stringDistance " + stringDistance);
             	System.out.println("doubleDistance " + doubleDistance);
-            	*/
+            	
 			}
-			//System.out.println(line);
+			System.out.println(line);
 			switch(line) 
 	        { 
 	            case "Car":
@@ -237,8 +231,6 @@ public class DakarRace {
 	            	car.setSpeed(Double.parseDouble(speed));
 	            	car.setDistance(Double.parseDouble(distance));
 	            	cars.add(car);
-	            	//System.out.println("'''''''''''''''''''''''''''''''''''''");
-	            	//System.out.println(car);
 	                break; 
 	            case "Bike": 
 	            	Bike bike = new Bike();

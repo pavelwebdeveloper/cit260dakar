@@ -88,6 +88,7 @@ public class Vehicle {
 	void setSpeed()
 	{
 		this.speed = (Math.random()*100);
+		this.speed = Math.round(this.speed * 100) / 100.0;
 	}
 	
 	void setSpeed(double speed)
