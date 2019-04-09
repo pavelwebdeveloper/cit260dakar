@@ -101,6 +101,4 @@ public class Vehicle {
 		this.distanceTraveled = kilometers;
 		this.setSpeed();
 	}
-	
-	
 }

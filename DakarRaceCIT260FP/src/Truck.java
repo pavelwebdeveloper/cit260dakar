@@ -17,7 +17,7 @@ public class Truck extends Vehicle {
 	
 	public String toString()
 	{
-		return "Truck " + this.number;
+		return "Truck " + this.number + " s:" + getSpeed() + " d:" + getDistanceTraveled() +" t:" + this.getTimeTraveled() + " " + getLongTimeTraveled();
 	}
 	
 	void setSpeed()
