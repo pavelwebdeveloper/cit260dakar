@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * This is a simple program to simulate a Dakar Race
@@ -15,7 +19,7 @@ public class DakarRace {
 	static int KILOMETERS_400 = 400;
 	static int KILOMETERS_300 = 300;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Welcome to Darkar Race");
 		
        	// Call a _for_ creating all the cars
@@ -96,8 +100,33 @@ public class DakarRace {
 		System.out.println("Store the race on disk");
 		storeRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
 		
+		// Clean all the lists
+		listOfCars.clear();
+		listOfBikes.clear();
+		listOfTrucks.clear();
+		
 		System.out.println("Restore the race from disk");
 		retrieveRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
+		
+		
+		for(Car car : listOfCars)
+		{
+			car.setSpeed();
+			car.run(KILOMETERS_400);
+			System.out.println(car.toString());
+		}
+		for(Bike bike : listOfBikes)
+		{
+			bike.setSpeed();
+			bike.run(KILOMETERS_300);
+			System.out.println(bike.toString());
+		}
+		for(Truck truck : listOfTrucks)
+		{
+			truck.setSpeed();
+			truck.run(KILOMETERS_400);
+			System.out.println(truck.toString());
+		}
 	}
 	
 	public static Car bestCar(ArrayList<Car> Cars)
@@ -145,13 +174,90 @@ public class DakarRace {
 		return bestTruck;
 	}
 	
-	public static void storeRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks)
+	public static void storeRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks) throws FileNotFoundException
 	{
-		System.out.println("ToDo: storeRace");
+		PrintWriter file = new PrintWriter(fileName);
+		for(Car car : cars)
+		{
+			file.println(car.toString());
+		}
+		for(Bike bike : bikes)
+		{
+			file.println(bike.toString());
+		}
+		for(Truck truck : trucks)
+		{
+			file.println(truck.toString());
+		}
+		file.close();
 	}
 	
-	public static void retrieveRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks)
+	public static void retrieveRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks) throws IOException
 	{
 		System.out.println("ToDo: retrieveRace");
+		java.io.File file = new java.io.File(fileName);
+		Scanner input = new Scanner(file);
+		String number = null;
+		String speed = null;
+		String distance = null;
+		String stringDistance;
+		String doubleDistance;
+		while(input.hasNext())
+		{
+			String line = input.next();
+			if (("CarBikeTruck").contains(line))
+			{
+				//System.out.println("Procesar...");
+            	number = input.next();
+            	
+            	speed = input.next();
+            	speed = speed.substring(2, speed.indexOf("K"));
+            	
+            	distance = input.next();
+            	distance = distance.substring(2);
+            	
+            	stringDistance = input.next();
+            	
+            	doubleDistance = input.next();
+            	/*
+            	System.out.println("Car");
+            	System.out.println("number " + number);
+            	System.out.println("speed " + speed);
+            	System.out.println("distance " + distance);
+            	System.out.println("stringDistance " + stringDistance);
+            	System.out.println("doubleDistance " + doubleDistance);
+            	*/
+			}
+			//System.out.println(line);
+			switch(line) 
+	        { 
+	            case "Car":
+	            	Car car = new Car();
+	            	car.setNumber(Integer.parseInt(number));
+	            	car.setSpeed(Double.parseDouble(speed));
+	            	car.setDistance(Double.parseDouble(distance));
+	            	cars.add(car);
+	            	//System.out.println("'''''''''''''''''''''''''''''''''''''");
+	            	//System.out.println(car);
+	                break; 
+	            case "Bike": 
+	            	Bike bike = new Bike();
+	            	bike.setNumber(Integer.parseInt(number));
+	            	bike.setSpeed(Double.parseDouble(speed));
+	            	bike.setDistance(Double.parseDouble(distance));
+	            	bikes.add(bike); 
+	                break; 
+	            case "Truck": 
+	            	Truck truck = new Truck();
+	            	truck.setNumber(Integer.parseInt(number));
+	            	truck.setSpeed(Double.parseDouble(speed));
+	            	truck.setDistance(Double.parseDouble(distance));
+	            	trucks.add(truck); 
+	                break; 
+	            default: 
+	                //System.out.println("no match"); 
+	        } 
+		}
+		input.close();
 	}
 }

@@ -28,7 +28,7 @@ public class Vehicle {
 	// the speed is Kilometers / Hour
 	double speed;
 	
-	int distanceTraveled;
+	double distanceTraveled;
 	
 
 	double getDistanceTraveled()
@@ -88,6 +88,16 @@ public class Vehicle {
 	void setSpeed()
 	{
 		this.speed = (Math.random()*100);
+	}
+	
+	void setSpeed(double speed)
+	{
+		this.speed = speed;
+	}
+	
+	void setDistance(double distance)
+	{
+		this.distanceTraveled = distance;
 	}
 	
 	String getSpeed()
