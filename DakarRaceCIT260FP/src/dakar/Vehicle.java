@@ -1,3 +1,4 @@
+package dakar;
 /**
  * This is the Supper Class Vehicle.
  * All the vehicles in the Darkar Race derive from this one.
@@ -37,7 +38,7 @@ public class Vehicle {
 	}
 
 	
-	double getLongTimeTraveled()
+	public double getLongTimeTraveled()
 	{
 		return distanceTraveled / speed;
 	}
@@ -57,7 +58,7 @@ public class Vehicle {
 	}
 	
 	// Setters
-	void setNumber(int number)
+	public void setNumber(int number)
 	{
 		this.number = number;
 	}
@@ -91,12 +92,12 @@ public class Vehicle {
 		this.speed = Math.round(this.speed * 100) / 100.0;
 	}
 	
-	void setSpeed(double speed)
+	public void setSpeed(double speed)
 	{
 		this.speed = speed;
 	}
 	
-	void setDistance(double distance)
+	public void setDistance(double distance)
 	{
 		this.distanceTraveled = distance;
 	}
@@ -106,7 +107,7 @@ public class Vehicle {
 		return (Math.round(this.speed * 100)) / 100.0 + "Km/h";
 	}
 	
-	void run(int kilometers)
+	public void run(int kilometers)
 	{
 		// Use random speed to move the vehicle
 		this.distanceTraveled = kilometers;

@@ -1,3 +1,4 @@
+package dakar;
 /**
  * 
  */
@@ -20,7 +21,7 @@ public class Truck extends Vehicle {
 		return "Truck " + this.number + " s:" + getSpeed() + " d:" + getDistanceTraveled() +" t:" + this.getTimeTraveled() + " " + getLongTimeTraveled();
 	}
 	
-	void setSpeed()
+	public void setSpeed()
 	{
 		super.setSpeed();
 		// Because this is a Truck is 0.3 slow

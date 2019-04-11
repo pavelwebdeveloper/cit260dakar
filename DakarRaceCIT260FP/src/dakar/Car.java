@@ -1,3 +1,4 @@
+package dakar;
 /**
  * 
  */
@@ -20,7 +21,7 @@ public class Car extends Vehicle{
 		return "Car " + this.number + " s:" + getSpeed() + " d:" + getDistanceTraveled() +" t:" + this.getTimeTraveled() + " " + getLongTimeTraveled();
 	}
 	
-	void setSpeed()
+	public void setSpeed()
 	{
 		super.setSpeed();
 		// Because this is a Car the speed is the same like a vehicle

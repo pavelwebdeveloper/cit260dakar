@@ -1,8 +1,11 @@
-import java.util.ArrayList;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.util.ArrayList;
+
+import dakar.Bike;
+import dakar.Car;
+import dakar.Truck;
+import menu.MainMenu;
+import util.Menu;
 
 /**
  * This is a simple program to simulate a Dakar Race
@@ -16,15 +19,17 @@ import java.util.Scanner;
  */
 public class DakarRace {
 	
-	static int KILOMETERS_400 = 400;
-	static int KILOMETERS_300 = 300;
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("Welcome to Darkar Race");
+	
+	 	Menu menu = new MainMenu();
+        menu.display();
+        System.out.println("Good-bye!");
 		
        	// Call a _for_ creating all the cars
 		// The objects will create according the register.
-		
+		/*
 		System.out.println("Creating cars");
 		System.out.println("Creating bikes");
 		System.out.println("Creating trucks");		
@@ -97,7 +102,7 @@ public class DakarRace {
 		
 		
 		System.out.println("Store the race on disk");
-		storeRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
+		//storeRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
 		
 		// Clean all the lists
 		listOfCars.clear();
@@ -105,7 +110,7 @@ public class DakarRace {
 		listOfTrucks.clear();
 		
 		System.out.println("Restore the race from disk");
-		retrieveRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
+		//retrieveRace("race01.txt", listOfCars, listOfBikes, listOfTrucks);
 		
 		
 		for(Car car : listOfCars)
@@ -120,136 +125,7 @@ public class DakarRace {
 		{
 			System.out.println(truck.toString());
 		}
+		*/
 		
-	}
-	
-	public static Car bestCar(ArrayList<Car> Cars)
-	{
-		double bestTime = 9999999;
-		Car bestCar = null;
-		for(Car car : Cars)
-		{
-			if (car.getLongTimeTraveled() < bestTime)
-			{
-				bestTime = car.getLongTimeTraveled();
-				bestCar = car;
-			}
-		}
-		return bestCar;
-	}
-	
-	public static Bike bestBike(ArrayList<Bike> Bikes)
-	{
-		double bestTime = 9999999;
-		Bike bestBike = null;
-		for(Bike bike : Bikes)
-		{
-			if (bike.getLongTimeTraveled() < bestTime)
-			{
-				bestTime = bike.getLongTimeTraveled();
-				bestBike = bike;
-			}
-		}
-		return bestBike;
-	}
-	
-	public static Truck bestTruck(ArrayList<Truck> Trucks)
-	{
-		double bestTime = 9999999;
-		Truck bestTruck = null;
-		for(Truck truck : Trucks)
-		{
-			if (truck.getLongTimeTraveled() < bestTime)
-			{
-				bestTime = truck.getLongTimeTraveled();
-				bestTruck = truck;
-			}
-		}
-		return bestTruck;
-	}
-	
-	public static void storeRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks) throws FileNotFoundException
-	{
-		PrintWriter file = new PrintWriter(fileName);
-		for(Car car : cars)
-		{
-			file.println(car.toString());
-		}
-		for(Bike bike : bikes)
-		{
-			file.println(bike.toString());
-		}
-		for(Truck truck : trucks)
-		{
-			file.println(truck.toString());
-		}
-		file.close();
-	}
-	
-	public static void retrieveRace(String fileName, ArrayList<Car> cars, ArrayList<Bike> bikes, ArrayList<Truck> trucks) throws IOException
-	{
-		System.out.println("ToDo: retrieveRace");
-		java.io.File file = new java.io.File(fileName);
-		Scanner input = new Scanner(file);
-		String number = null;
-		String speed = null;
-		String distance = null;
-		String stringDistance;
-		String doubleDistance;
-		while(input.hasNext())
-		{
-			String line = input.next();
-			if (("CarBikeTruck").contains(line))
-			{
-				//System.out.println("Procesar...");
-            	number = input.next();
-            	
-            	speed = input.next();
-            	speed = speed.substring(2, speed.indexOf("K"));
-            	
-            	distance = input.next();
-            	distance = distance.substring(2);
-            	
-            	stringDistance = input.next();
-            	
-            	doubleDistance = input.next();
-            	
-            	System.out.println("Car");
-            	System.out.println("number " + number);
-            	System.out.println("speed " + speed);
-            	System.out.println("distance " + distance);
-            	System.out.println("stringDistance " + stringDistance);
-            	System.out.println("doubleDistance " + doubleDistance);
-            	
-			}
-			System.out.println(line);
-			switch(line) 
-	        { 
-	            case "Car":
-	            	Car car = new Car();
-	            	car.setNumber(Integer.parseInt(number));
-	            	car.setSpeed(Double.parseDouble(speed));
-	            	car.setDistance(Double.parseDouble(distance));
-	            	cars.add(car);
-	                break; 
-	            case "Bike": 
-	            	Bike bike = new Bike();
-	            	bike.setNumber(Integer.parseInt(number));
-	            	bike.setSpeed(Double.parseDouble(speed));
-	            	bike.setDistance(Double.parseDouble(distance));
-	            	bikes.add(bike); 
-	                break; 
-	            case "Truck": 
-	            	Truck truck = new Truck();
-	            	truck.setNumber(Integer.parseInt(number));
-	            	truck.setSpeed(Double.parseDouble(speed));
-	            	truck.setDistance(Double.parseDouble(distance));
-	            	trucks.add(truck); 
-	                break; 
-	            default: 
-	                //System.out.println("no match"); 
-	        } 
-		}
-		input.close();
 	}
 }

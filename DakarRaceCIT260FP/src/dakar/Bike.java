@@ -1,6 +1,8 @@
+package dakar;
 /**
  * 
  */
+
 
 /**
  * @author Pavel and Noldis
@@ -20,7 +22,7 @@ public class Bike extends Vehicle {
 		return "Bike " + this.number + " s:" + getSpeed() + " d:" + getDistanceTraveled() +" t:" + this.getTimeTraveled() + " " + getLongTimeTraveled();
 	}
 	
-	void setSpeed()
+	public void setSpeed()
 	{
 		super.setSpeed();
 		// Because this is a Bike is 0.2 faster
